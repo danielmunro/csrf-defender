@@ -1,0 +1,12 @@
+{
+    "name": "danielmunro/csrf",
+    "description": "A lightweight PHP library to help prevent csrf attacks.",
+    "require": {
+        "php":">=5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Csrf\\": "src"
+        }
+    }
+}

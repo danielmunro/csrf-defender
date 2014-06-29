@@ -11,17 +11,17 @@ class Csrf {
 
 	const DEFAULT_MAX_TOKENS = 20;
 
-	public function __construct(SessionHandlerInterface $session, $maxTokens = null) {
+	public function __construct(StorageInterface $session, $maxTokens = null) {
 
 		$this->session = $session;
-		$this->tokens = unserialize($this->session->read('csrf'));
+		$this->tokens = unserialize($this->session->get('csrf'));
 		$this->addToken();
 	}
 
 	public function addToken() {
 
 		$this->tokens[] = uniqid();
-		$this->session->write('csrf', serialize($this->tokens));
+		$this->session->set('csrf', serialize($this->tokens));
 	}
 
 	public function validate($token) {
